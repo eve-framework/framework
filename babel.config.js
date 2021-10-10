@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-typescript'],
+  presets: [['@babel/preset-env', { loose: true }], '@babel/preset-typescript'],
   plugins: [
     '@babel/plugin-transform-runtime',
     '@babel/plugin-proposal-nullish-coalescing-operator',

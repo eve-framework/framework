@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 14.x
+          scope: '@eve-framework'
 
       - name: Install Dependencies
         run: yarn
@@ -28,8 +29,6 @@ jobs:
         id: changesets
         uses: changesets/action@master
         with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: yarn release
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
