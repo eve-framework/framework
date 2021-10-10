@@ -2,5 +2,10 @@
   "name": "@eve-framework/event-store",
   "version": "1.0.0",
   "main": "dist/eve-framework-event-store.cjs.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.15.4",
+    "@pulumi/aws": "^4.24.0",
+    "@pulumi/pulumi": "^3.14.0"
+  }
 }
