@@ -1,0 +1,5 @@
+{
+  "name": "@eve-framework/event-store",
+  "version": "1.0.0",
+  "main": "dist/eve-framework-event-store.cjs.js"
+}
