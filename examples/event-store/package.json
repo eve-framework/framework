@@ -1,0 +1,9 @@
+{
+  "name": "@eve-framework/example",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "private": true,
+  "dependencies": {
+    "@eve-framework/event-store": "^1.0.0"
+  }
+}

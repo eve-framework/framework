@@ -4,8 +4,10 @@
   "main": "dist/eve-framework-event-store.cjs.js",
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "^7.15.4",
-    "@pulumi/aws": "^4.24.0",
-    "@pulumi/pulumi": "^3.14.0"
+    "@babel/runtime": "^7.15.4"
+  },
+  "peerDependencies": {
+    "@pulumi/aws": "^4.0.0",
+    "@pulumi/pulumi": "^3.0.0"
   }
 }
