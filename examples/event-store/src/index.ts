@@ -1,3 +1,5 @@
-import { EventStore } from '@eve-framework/event-store';
+import { EventStore } from '@eve-framework/event-store/iac';
 
-new EventStore('example-event-store');
+const store = new EventStore('example-event-store');
+
+store.createWriteQueue('customer');

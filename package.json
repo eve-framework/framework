@@ -13,7 +13,8 @@
   "preconstruct": {
     "packages": [
       "packages/*"
-    ]
+    ],
+    "distFilenameStrategy": "unscoped-package-name"
   },
   "scripts": {
     "postinstall": "preconstruct dev && manypkg check",
@@ -38,7 +39,9 @@
     "@manypkg/cli": "^0.18.0",
     "@preconstruct/cli": "^2.1.5",
     "@pulumi/aws": "^4.24.0",
+    "@pulumi/awsx": "^0.32.0",
     "@pulumi/pulumi": "^3.14.0",
+    "@types/aws-lambda": "^8.10.83",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
@@ -60,6 +63,6 @@
     "arrowParens": "avoid"
   },
   "eslintIgnore": [
-    "packages/*/dist/"
+    "packages/**/*/dist/"
   ]
 }

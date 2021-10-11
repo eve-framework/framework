@@ -1,13 +1,25 @@
 {
   "name": "@eve-framework/event-store",
   "version": "1.1.0",
-  "main": "dist/eve-framework-event-store.cjs.js",
+  "main": "dist/event-store.cjs.js",
   "license": "MIT",
+  "preconstruct": {
+    "entrypoints": [
+      "iac.ts",
+      "handlers/*.ts"
+    ]
+  },
   "dependencies": {
     "@babel/runtime": "^7.15.4"
   },
+  "devDependencies": {
+    "@pulumi/aws": "^4.24.0",
+    "@pulumi/awsx": "^0.32.0",
+    "@pulumi/pulumi": "^3.14.0"
+  },
   "peerDependencies": {
-    "@pulumi/aws": "^4.0.0",
-    "@pulumi/pulumi": "^3.0.0"
+    "@pulumi/aws": "^4.24.0",
+    "@pulumi/awsx": "^0.32.0",
+    "@pulumi/pulumi": "^3.14.0"
   }
 }
