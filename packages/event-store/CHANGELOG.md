@@ -1,5 +1,12 @@
 # @eve-framework/event-store
 
+## 1.1.3
+
+### Patch Changes
+
+- 4bf7f62: lambda bundle output to directory
+- 76304d6: bundle lambda via esbuild
+
 ## 1.1.2
 
 ### Patch Changes
