@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "@pulumi/aws": "4.34.0",
-    "@pulumi/awsx": "0.32.0",
     "@pulumi/command": "^0.0.3",
     "@pulumi/pulumi": "3.22.1",
     "aws-sdk": "^2.0.0",
-    "dynamodb-toolbox": "^0.3.4"
+    "dynamodb-toolbox": "^0.3.4",
+    "esbuild": "^0.14.11"
   }
 }

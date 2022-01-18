@@ -7,5 +7,6 @@ export const handler: Callback<QueueEvent, void> = async _ => {
     name: process.env.DYNAMODB_TABLE || '',
     partitionKey: 'id',
   });
+
   console.error(table.name);
 };

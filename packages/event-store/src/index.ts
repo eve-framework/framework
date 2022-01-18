@@ -1,6 +1,7 @@
+import path from 'path';
 import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
-import { handler } from './handlers/writeEventHandler';
+import { BundleFunction } from './bundleFunction';
 
 type CreateWriteQueueOps = {
   batchSize?: number;
@@ -104,15 +105,11 @@ export class EventStore extends pulumi.ComponentResource {
       this.defaultResourceOptions,
     );
 
-    const eventHandler = new aws.lambda.CallbackFunction(
+    const eventHandler = new BundleFunction(
       `${name}-event-handler`,
       {
-        callback: handler,
-        runtime: aws.lambda.Runtime.NodeJS14dX,
-        role: eventHandlerRole,
-        codePathOptions: {
-          extraIncludePackages: ['dynamodb-toolbox'],
-        },
+        entries: [path.resolve(__dirname, './handlers/writeEventHandler.js')],
+        role: eventHandlerRole.arn,
         environment: {
           variables: {
             DYNAMODB_TABLE: this.eventTable.name,
