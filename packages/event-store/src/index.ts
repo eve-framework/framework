@@ -108,10 +108,14 @@ export class EventStore extends pulumi.ComponentResource {
     const eventHandler = new BundleFunction(
       `${name}-event-handler`,
       {
-        entries: [path.resolve(__dirname, './handlers/writeEventHandler.js')],
+        entry: path.resolve(__dirname, './handlers/writeEventHandler.js'),
+        bundling: {
+          sourceMap: true,
+        },
         role: eventHandlerRole.arn,
         environment: {
           variables: {
+            NODE_OPTIONS: '--enable-source-maps',
             DYNAMODB_TABLE: this.eventTable.name,
           },
         },
