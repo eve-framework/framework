@@ -1,5 +1,10 @@
 import { EventStore } from '@eve-framework/event-store';
+import { Output } from '@pulumi/pulumi';
 
-const store = new EventStore('example-event-store');
+const store = new EventStore();
 
-store.createWriteQueue('customer');
+const genericWriteQueue = store.createWriteQueue();
+const customerWriteQueue = store.createWriteQueue('customer');
+
+export const customerWriteQueueName: Output<string> = customerWriteQueue.queue.name;
+export const genericWriteQueueName: Output<string> = genericWriteQueue.queue.name;
