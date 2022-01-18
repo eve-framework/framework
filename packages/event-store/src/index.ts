@@ -99,6 +99,7 @@ export class EventStore extends pulumi.ComponentResource {
             ),
           },
         ],
+        managedPolicyArns: [aws.iam.ManagedPolicy.AWSLambdaExecute],
       },
       this.defaultResourceOptions,
     );

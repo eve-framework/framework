@@ -1,5 +1,5 @@
 {
-  "name": "@eve-framework-examples/event-store",
+  "name": "@eve-framework/examples-event-store",
   "version": "1.0.1",
   "main": "src/index.ts",
   "private": true,
