@@ -1,9 +1,15 @@
 {
-  "name": "@eve-framework/example",
+  "name": "@eve-framework-examples/event-store",
   "version": "1.0.0",
   "main": "src/index.ts",
   "private": true,
+  "scripts": {
+    "deploy": "pulumi up --yes"
+  },
   "dependencies": {
-    "@eve-framework/event-store": "^1.0.0"
+    "@eve-framework/event-store": "*"
+  },
+  "devDependencies": {
+    "typescript": "^4.4"
   }
 }

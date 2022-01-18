@@ -1,4 +1,4 @@
-import { EventStore } from '@eve-framework/event-store/iac';
+import { EventStore } from '@eve-framework/event-store';
 
 const store = new EventStore('example-event-store');
 

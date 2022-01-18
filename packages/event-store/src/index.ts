@@ -1,7 +1,6 @@
-import path from 'path';
 import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
-export const test = () => '1';
+import { handler } from './handlers/writeEventHandler';
 
 type CreateWriteQueueOps = {
   batchSize?: number;
@@ -14,12 +13,13 @@ type EventTableOpts = {
   readCapacity?: number;
 };
 
-type EventStoreOpts = {
+interface EventStoreOpts {
   eventTableOpts?: EventTableOpts;
-};
+}
 
 export class EventStore extends pulumi.ComponentResource {
   readonly eventTable: aws.dynamodb.Table;
+  readonly eventStoreOpts: EventStoreOpts;
   private defaultResourceOptions: pulumi.ResourceOptions;
 
   /**
@@ -33,6 +33,7 @@ export class EventStore extends pulumi.ComponentResource {
     };
     super('eve:components:EventStore', name, inputs, opts);
     this.defaultResourceOptions = { parent: this };
+    this.eventStoreOpts = eventStoreOpts || {};
 
     this.eventTable = new aws.dynamodb.Table(
       `${pulumi.getStack()}-${pulumi.getProject()}-events`,
@@ -52,7 +53,13 @@ export class EventStore extends pulumi.ComponentResource {
   }
 
   public createWriteQueue(name: string, opts?: CreateWriteQueueOps) {
-    const queue = new aws.sqs.Queue(name, undefined, this.defaultResourceOptions);
+    const queue = new aws.sqs.Queue(
+      name,
+      {
+        visibilityTimeoutSeconds: 180,
+      },
+      this.defaultResourceOptions,
+    );
 
     const eventHandlerRole = new aws.iam.Role(
       `${name}-event-handler-role`,
@@ -96,24 +103,27 @@ export class EventStore extends pulumi.ComponentResource {
       this.defaultResourceOptions,
     );
 
-    const eventHandler = new aws.lambda.Function(
+    const eventHandler = new aws.lambda.CallbackFunction(
       `${name}-event-handler`,
       {
-        code: new pulumi.asset.AssetArchive({
-          '.': new pulumi.asset.FileArchive(
-            path.resolve(__dirname + './../../handlers/writeEventHandler'),
-          ),
-        }),
-        handler: 'index.handler',
+        callback: handler,
         runtime: aws.lambda.Runtime.NodeJS14dX,
-        role: eventHandlerRole.arn,
+        role: eventHandlerRole,
+        codePathOptions: {
+          extraIncludePackages: ['dynamodb-toolbox'],
+        },
+        environment: {
+          variables: {
+            DYNAMODB_TABLE: this.eventTable.name,
+          },
+        },
       },
       { ...this.defaultResourceOptions, dependsOn: [eventHandlerRole] },
     );
 
     queue.onEvent(`${name}-event-subscription`, eventHandler, opts, {
       ...this.defaultResourceOptions,
-      dependsOn: [eventHandlerRole],
+      dependsOn: [eventHandler],
     });
 
     return {

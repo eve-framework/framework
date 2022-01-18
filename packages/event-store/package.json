@@ -1,25 +1,23 @@
 {
   "name": "@eve-framework/event-store",
   "version": "1.1.0",
-  "main": "dist/event-store.cjs.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "source": "./src/index.ts",
+  "files": [
+    "dist/**"
+  ],
   "license": "MIT",
-  "preconstruct": {
-    "entrypoints": [
-      "iac.ts",
-      "handlers/*.ts"
-    ]
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc"
   },
   "dependencies": {
-    "@babel/runtime": "^7.15.4"
-  },
-  "devDependencies": {
-    "@pulumi/aws": "^4.24.0",
-    "@pulumi/awsx": "^0.32.0",
-    "@pulumi/pulumi": "^3.14.0"
-  },
-  "peerDependencies": {
-    "@pulumi/aws": "^4.24.0",
-    "@pulumi/awsx": "^0.32.0",
-    "@pulumi/pulumi": "^3.14.0"
+    "@pulumi/aws": "4.34.0",
+    "@pulumi/awsx": "0.32.0",
+    "@pulumi/command": "^0.0.3",
+    "@pulumi/pulumi": "3.22.1",
+    "aws-sdk": "^2.0.0",
+    "dynamodb-toolbox": "^0.3.4"
   }
 }
