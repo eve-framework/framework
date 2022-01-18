@@ -1,5 +1,11 @@
 # @eve-framework/event-store
 
+## 1.1.2
+
+### Patch Changes
+
+- de34c5d: fix example build
+
 ## 1.1.1
 
 ### Patch Changes
