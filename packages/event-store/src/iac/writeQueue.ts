@@ -1,8 +1,7 @@
 import path from 'path';
 import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
-import type { Input } from '@pulumi/pulumi';
-import { BundleFunction } from '../bundleFunction';
+import { BundleFunction } from '@eve-framework/bundle-function';
 import { resourceName } from './../utils';
 
 export interface EventStoreWriteQueueSubscriptionOpts {
@@ -12,7 +11,7 @@ export interface EventStoreWriteQueueSubscriptionOpts {
 
 export interface EventStoreWriteQueueOpts {
   queueSubscriptionOpts?: EventStoreWriteQueueSubscriptionOpts;
-  eventTableName?: string | Input<string>;
+  eventTableName?: string | pulumi.Input<string>;
 }
 
 export class EventStoreWriteQueue extends pulumi.ComponentResource {

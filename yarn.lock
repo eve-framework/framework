@@ -858,13 +858,6 @@
     read-package-tree "^5.2.1"
     resolve "^1.7.1"
 
-"@pulumi/command@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@pulumi/command/-/command-0.0.3.tgz#99a8a2dbcfafbb742016793130e6174b2d4c670b"
-  integrity sha512-p1LYrqNMIqKwHz+Xx+mC5N7/UjF7/bT9VKWzaW4rXu7SqlilFf9fisOo73e9QVexSgL9NfrsPi/CdzUcTXZVYA==
-  dependencies:
-    "@pulumi/pulumi" "^3.0.0"
-
 "@pulumi/pulumi@3.22.1", "@pulumi/pulumi@^3.0.0":
   version "3.22.1"
   resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.22.1.tgz#ca006c433833368fb61428ccb3f9fdcd298d494a"
