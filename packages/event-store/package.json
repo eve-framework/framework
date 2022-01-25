@@ -15,7 +15,9 @@
   "dependencies": {
     "@eve-framework/bundle-function": "*",
     "@pulumi/aws": "4.34.0",
-    "@pulumi/pulumi": "3.22.1",
+    "@pulumi/pulumi": "3.22.1"
+  },
+  "devDependencies": {
     "aws-sdk": "^2.0.0",
     "dynamodb-toolbox": "^0.3.4"
   },

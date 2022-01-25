@@ -95,6 +95,7 @@ export class EventStoreWriteQueue extends pulumi.ComponentResource {
         entry: path.resolve(__dirname, '../handlers/writeEventHandler.js'),
         bundling: {
           sourceMap: true,
+          externalModules: ['dynamodb-toolbox'],
         },
         role: eventHandlerRole.arn,
         environment: {
