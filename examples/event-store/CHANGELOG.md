@@ -1,5 +1,13 @@
 # @eve-framework-examples/event-store
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies [534c561]
+- Updated dependencies [a65dfa9]
+  - @eve-framework/event-store@1.1.4
+
 ## 1.0.3
 
 ### Patch Changes
