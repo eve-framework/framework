@@ -7,7 +7,8 @@
     "deploy": "pulumi up --yes"
   },
   "dependencies": {
-    "@eve-framework/event-store": "*"
+    "@eve-framework/event-store": "*",
+    "dynamodb-toolbox": "^0.3.4"
   },
   "devDependencies": {
     "typescript": "^4.4"

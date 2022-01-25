@@ -18,5 +18,8 @@
     "@pulumi/pulumi": "3.22.1",
     "aws-sdk": "^2.0.0",
     "dynamodb-toolbox": "^0.3.4"
+  },
+  "peerDependencies": {
+    "dynamodb-toolbox": "^0.3.4"
   }
 }
